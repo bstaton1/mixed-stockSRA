@@ -1,0 +1,40 @@
+model
+{
+    b0 ~ dnorm(0.00000E+00, 0.001)
+    b1 ~ dnorm(0.00000E+00, 0.001)
+    for (s in 1:np) {
+        pi_p[s] ~ dbeta(1, 1)
+        psi_p[s] <- pi_p[s]/(1 - pi_p[s])
+    }
+    for (i in 1:n_obs_tags_p) {
+        tags_u_p[i] ~ dbin(pi_p[stock_tags_p[i]], tags_n_p[i])
+    }
+    tau_fit ~ dgamma(0.001, 0.001)
+    sig_fit <- 1/sqrt(tau_fit)
+    for (i in 1:n_obs_fish_p) {
+        weir_fish_p[i] ~ dnorm(pred_weir_fish_p[i], tau_fit)
+        pred_weir_fish_p[i] <- b0 + b1 * A_hat_p[i]
+        A_hat_p[i] <- air_fish_p[i] * (1 + psi_p[stock_fish_p[i]])
+    }
+    for (i in 1:n_pred) {
+        pred_y[i] <- b0 + b1 * pred_x[i]
+    }
+    for (s in 1:nup) {
+        pi_up[s] ~ dbeta(1, 1)
+        psi_up[s] <- pi_up[s]/(1 - pi_up[s])
+    }
+    for (i in 1:n_obs_tags_up) {
+        tags_u_up[i] ~ dbin(pi_up[stock_tags_up[i]], tags_n_up[i])
+    }
+    for (s in 1:nup) {
+        for (y in 1:nyrs) {
+            S_tot[y, s] <- b0 + b1 * A_hat_up[y, s]
+            A_hat_up[y, s] <- air_fish_up[y, s] * (1 + psi_up[s])
+        }
+    }
+    for (y in 1:nyrs) {
+        S_acct[y] <- sum(S_tot[y, ]) + weir_tot[y]
+        p_acct[y] <- S_acct[y]/dw_S[y]
+        H_acct[y] <- dw_H[y] * p_acct[y]
+    }
+}
