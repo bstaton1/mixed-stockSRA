@@ -304,7 +304,7 @@ xlim1 = rep(0, 5)
 xlim2 = c(1, 1, 8000, 95000, 1.5)
 
 # the latex code to create nice labels
-latex = c("$\\bar{U}_{MSY,j}$", "$\\bar{U}_{MSY}$", "$\\bar{S}_{MSY,j}$", "$\\bar{S}_{MSY}$", "$\\bar{\\sigma}_{R,j}$")
+latex = c("$\\bar{U}_{MSY,j}$", "$U_{MSY}$", "$\\bar{S}_{MSY,j}$", "$S_{MSY}$", "$\\bar{\\sigma}_{R,j}$")
 
 # the letters to identify each plot
 lets = c("a", "b", "c", "d", "e")
