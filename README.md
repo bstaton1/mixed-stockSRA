@@ -1,6 +1,6 @@
-```
+
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3375006.svg)](https://doi.org/10.5281/zenodo.3375006)
-```
+
 
 This repository stores the code and data used to perform the analysis presented in Staton et al.: _Evaluation of methods for spawner-recruit analysis in mixed-stock Pacific salmon fisheries_ (DOI: [10.1139/cjfas-2019-0281](<https://doi.org/10.1139/cjfas-2019-0281>))
 
