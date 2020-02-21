@@ -8,26 +8,27 @@ rm(list = ls(all = T))
 # resolution for figures (pixels per inch)
 ppi = 600
 
+# set working directory
+setwd("location/of/this/file")
+
 # Staton packages
-# running devtools::install_github("bstaton1/SimSR") will install all of these packages
+# running devtools::install_github("bstaton1/FitSR") will install all of these packages
 library(FitSR)
 library(SimSR)
 library(postpack)
 library(StatonMisc)
 
 # directories and file names
-base_post_dir = "C:/Users/bstaton/Desktop/Staton/2_kusko/analyses/z-output-storage/multi-sra/kusko-fit-outputs/ssm_post_base/"
-vuln_post_dir = "C:/Users/bstaton/Desktop/Staton/2_kusko/analyses/z-output-storage/multi-sra/kusko-fit-outputs/ssm_post_alt_vuln/"
-aess_post_dir = "C:/Users/bstaton/Desktop/Staton/2_kusko/analyses/z-output-storage/multi-sra/kusko-fit-outputs/ssm_post_alt_ess/"
+post_dir = "location/of/posterior/samples"
+base_post_dir = file.path(post_dir, "ssm_post_base")
+vuln_post_dir = file.path(post_dir, "ssm_post_alt_vuln")
+aess_post_dir = file.path(post_dir, "ssm_post_alt_ess")
 post_file = "ssm_4_post.rds"
 
 # output directories
-out_dir = "C:/Users/bstaton/Desktop/Staton/2_kusko/analyses/mixed-stockSRA/kusko/3-post-process"
+out_dir = "location/to/dump/output"
 fig_dir = file.path(out_dir, "figs"); if (!dir.exists(fig_dir)) dir.create(fig_dir)
 tab_dir = file.path(out_dir, "tabs"); if (!dir.exists(tab_dir)) dir.create(tab_dir)
-
-# set the working directory
-setwd(out_dir)
 
 # load posterior samples
 base_post = readRDS(file = file.path(base_post_dir, post_file))
@@ -65,7 +66,7 @@ attach(params)
 obs = gen_Rys_obs(params = params, obs = obs)
 
 # read in alternative vulnerability schedules
-alt_vuln_v = read.csv("C:/Users/bstaton/Desktop/Staton/2_kusko/analyses/mixed-stockSRA/kusko/2-model-fit/inputs/vuln.csv", stringsAsFactors = F)
+alt_vuln_v = read.csv(file.path(in_dir, "vuln.csv"), stringsAsFactors = F)
 vstocks = alt_vuln_v$stock
 aess_v = rep(1, ns)
 base_v = rep(1, ns)

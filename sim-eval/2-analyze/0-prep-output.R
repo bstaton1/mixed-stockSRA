@@ -9,7 +9,7 @@ rm(list = ls(all = T))
 # location of the output files
 # these files were not uploaded to the repo. 
 # they are available upon request from the authors.
-output_dir = "C:/Users/bstaton/Desktop/Staton/2_kusko/analyses/z-output-storage/multi-sra/sim-fit-outputs/outputs/"
+output_dir = "location/of/output/files"
 
 # read in regression model output and split into two dfs
 lme_summ = readRDS(file.path(output_dir, "lme_summ.rds"))

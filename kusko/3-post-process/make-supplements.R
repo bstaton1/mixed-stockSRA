@@ -1,7 +1,7 @@
 # a script for creating the online supplements for each SSM
 rm(list = ls(all = T))
 
-setwd("C:/Users/bstaton/Desktop/Staton/2_kusko/analyses/mixed-stockSRA/kusko/3-post-process")
+setwd("location/of/this/file")
 
 # names of models
 ids = c("vm", "Vm", "vM", "VM")

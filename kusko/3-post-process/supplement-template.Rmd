@@ -36,10 +36,8 @@ opts_chunk$set(echo = F, message = F, warning = F, fig.align = "center")
 ```
 
 ```{r load posterior samples}
-main_dir = "C:/Users/bstaton/Desktop/Staton/2_kusko/analyses/kusko-multi-sra"
-
 # directories and file names
-post_dir = "C:/Users/bstaton/Desktop/Staton/2_kusko/analyses/z-output-storage/multi-sra/kusko-fit-outputs/ssm_post_base/"
+post_dir = "location/of/posterior/samples"
 post_file = paste(paste("ssm_", model, "_post", ifelse(short, "_short", ""), sep = ""), "rds", sep = ".")
 
 # load in the posterior samples

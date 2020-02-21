@@ -2,7 +2,7 @@
 # THIS SCRIPT SUMMARIZES HOW LONG IT TOOK THE DIFFERENT MODELS TO FIT
 # ON THE HPC
 
-job_info_dir = "C:/Users/bstaton/Desktop/Staton/2_kusko/analyses/z-output-storage/multi-sra/sim-fit-outputs/job-info"
+job_info_dir = "path/to/job/info"
 
 ##### FUNCTION TO HELP WITH THIS EFFORT #####
 convert_hpc_duration = function(x, units = "days") {

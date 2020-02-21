@@ -9,16 +9,22 @@ rm(list = ls(all = T))
 ppi = 600
 
 # Staton packages
-# running devtools::install_github("bstaton1/SimSR") will install all of these packages
+# running devtools::install_github("bstaton1/FitSR") will install all of these packages
 library(FitSR)
 library(SimSR)
 library(postpack)
 library(StatonMisc)
 
+# set working directory
+setwd("location/of/this/file")
+
 # directories and file names for posterior samples
 # these files are FAR too large to place in a Git repo
-ssm_post_dir = "C:/Users/bstaton/Desktop/Staton/2_kusko/analyses/z-output-storage/multi-sra/kusko-fit-outputs/ssm_post_base"
-lm_post_dir = "C:/Users/bstaton/Desktop/Staton/2_kusko/analyses/z-output-storage/multi-sra/kusko-fit-outputs/lm_post"
+# contact the author if you wish to run this code, or run the model yourself to obtain these output files
+
+post_dir = "location/of/posterior/samples"
+ssm_post_dir = file.path(post_dir, "ssm_post_base")
+lm_post_dir = file.path(post_dir, "lm_post")
 postlm_file = "lm__post.rds"
 post1_file = "ssm_1_post.rds"
 post2_file = "ssm_2_post.rds"
@@ -26,11 +32,8 @@ post3_file = "ssm_3_post.rds"
 post4_file = "ssm_4_post.rds"
 
 # output directories
-out_dir = "C:/Users/bstaton/Desktop/Staton/2_kusko/analyses/mixed-stockSRA/kusko/3-post-process"
+out_dir = "location/to/dump/output"
 fig_dir = file.path(out_dir, "figs"); if (!dir.exists(fig_dir)) dir.create(fig_dir)
-
-# set the working directory
-setwd(out_dir)
 
 # load posterior samples
 postlm = readRDS(file = file.path(lm_post_dir, postlm_file))
