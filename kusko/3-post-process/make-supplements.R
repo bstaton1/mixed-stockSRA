@@ -22,7 +22,7 @@ for (model in 1:4) {
   dir.create("Model Files")
   rmarkdown::render(
     input = "supplement-template.Rmd", 
-    output_file = paste0("Online Supplement S", model+1, ".html"),
+    output_file = paste0("Online Supplement ", LETTERS[model+1], ".html"),
     quiet = T
   ); detach(params)
   

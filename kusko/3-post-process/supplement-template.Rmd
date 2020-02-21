@@ -1,7 +1,7 @@
 ---
-title: "**`r paste0('Online Supplement S', model+1)`**"
+title: "**`r paste0('Online Supplement ', LETTERS[model+1])`**"
 subtitle: "_`r paste('Detailed Output for Kuskokwim River Chinook Salmon SSM', id, sep = '-')`_"
-author: "Staton et al."
+author: "Staton et al.; DOI: [10.1139/cjfas-2019-0281](https://doi.org/10.1139/cjfas-2019-0281)"
 output: 
   html_document:
     theme: cerulean
@@ -165,7 +165,7 @@ tmp_summ = function(z, na.rm = F) {
 diags = post_summ(post, main_p, Rhat = T, ess = T)[c("Rhat", "ess"),]
 all_p = colnames(diags)
 diags = sapply(main_p, function(x) {
-  list(diags[,stringr::str_detect(all_p, ins_regex_bracket(x))])
+  list(diags[,stringr::str_detect(all_p, postpack:::ins_regex_bracket(x))])
 })
 
 Rhat = t(as.data.frame(lapply(diags, function(x) {
